@@ -6,13 +6,22 @@ public class mercancioScript : MonoBehaviour
 {
 
     public int precio;
+    public MoneyManager moneyManager;
 
-    private void OnCollisionEnter(Collision collision)
+    void Start()
+    {
+        moneyManager = FindObjectOfType<MoneyManager>(); 
+    }
+    void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject);
         if (collision.gameObject.name ==  "Player")
         {
-            Destroy(gameObject);
+            bool leAlcanza = moneyManager.UpdateMoney(-precio);
+            if (leAlcanza)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
