@@ -14,7 +14,7 @@ public class mercancioScript : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject);
+        
         if (collision.gameObject.name ==  "Player")
         {
             bool leAlcanza = moneyManager.UpdateMoney(-precio);
